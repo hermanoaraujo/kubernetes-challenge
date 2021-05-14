@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: k8s-challenge-svc
+  name: k8s-challenge-svc
+  namespace: virtualizacao
+spec:
+  ports:
+  - port: 4000
+    protocol: TCP
+    targetPort: 4000
+  selector:
+    app: k8s-challenge-app

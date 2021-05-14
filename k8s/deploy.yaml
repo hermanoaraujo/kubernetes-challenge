@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: k8s-challenge-app
+  name: k8s-challenge-app
+  namespace: virtualizacao
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-challenge-app
+  template:
+    metadata:
+      labels:
+        app: k8s-challenge-app
+    spec:
+      containers:
+      - image: k8s-challenge-hermano:latest
+        name: k8s-challenge-hermano
+        resources: {}
+        env:
+        - name: NAME
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: NAME
